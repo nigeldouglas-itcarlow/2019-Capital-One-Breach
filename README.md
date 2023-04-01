@@ -25,3 +25,25 @@ spec:
     labels:
       feed: tor
 ```
+
+## Organizing IPTable Rules in Logical Order
+
+```
+cat << EOF > tiers.yaml
+---
+apiVersion: projectcalico.org/v3
+kind: Tier
+metadata:
+  name: nigel-security
+spec:
+  order: 400
+
+---
+apiVersion: projectcalico.org/v3
+kind: Tier
+metadata:
+  name: capital-one-platform
+spec:
+  order: 500
+EOF
+```
