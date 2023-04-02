@@ -47,3 +47,9 @@ spec:
   order: 500
 EOF
 ```
+
+Whitelisting ```kube-dns``` traffic in the ```nigel-security``` tier:
+```
+kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2019-Capital-One-Breach/main/configs/kube-dns.yaml
+```
+
