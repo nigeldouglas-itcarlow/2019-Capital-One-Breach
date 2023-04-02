@@ -53,3 +53,8 @@ Whitelisting ```kube-dns``` traffic in the ```nigel-security``` tier:
 kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2019-Capital-One-Breach/main/configs/kube-dns.yaml
 ```
 
+Introducing the ```Capital One``` microservice application <br/>
+This creates a ```frontend```, a ```backend```, a ```logging```service, and 2 intermediary microservices
+```
+kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2019-Capital-One-Breach/main/applications/microservices.yaml
+```
