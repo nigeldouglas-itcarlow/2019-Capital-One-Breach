@@ -1,10 +1,10 @@
 apiVersion: projectcalico.org/v3
 kind: GlobalNetworkPolicy
 metadata:
-  name: security.allow-kube-dns
+  name: nigel-security.allow-kube-dns
 spec:
   # requires security tier to exist
-  tier: security
+  tier: nigel-security
   order: 2000
   selector: all()
   types:
