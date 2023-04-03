@@ -13,6 +13,18 @@ eksctl create cluster capital-one --node-type t3.xlarge --nodes=1 --nodes-min=0 
 <img width="1369" alt="Screenshot 2023-04-03 at 10 08 55" src="https://user-images.githubusercontent.com/126002808/229472385-2e139249-da22-4f5e-a809-ddd82d29f4ef.png">
 
 
+<img width="1080" alt="Screenshot 2023-04-03 at 21 46 52" src="https://user-images.githubusercontent.com/126002808/229625448-6f06e850-31a6-4fc7-ba0d-d81d06027dbd.png">
+
+
+<img width="1080" alt="Screenshot 2023-04-03 at 21 47 27" src="https://user-images.githubusercontent.com/126002808/229625473-d3485e98-2aaf-4332-986f-87145609e1d0.png">
+
+
+<img width="1169" alt="Screenshot 2023-04-03 at 21 52 41" src="https://user-images.githubusercontent.com/126002808/229625496-90341cf5-e0ad-430e-bb25-31a1f882e1e5.png">
+
+<img width="1169" alt="Screenshot 2023-04-03 at 21 54 15" src="https://user-images.githubusercontent.com/126002808/229625512-d83eabc9-d439-4eac-89d8-6d91ba3f1068.png">
+
+
+
 ## Deny Traffic to TOR Exit Nodes
 
 The Tigera/Calico team provide the below ```GlobalThreatFeed``` manifest. <br/>
