@@ -16,9 +16,6 @@ eksctl create cluster capital-one --node-type t3.xlarge --nodes=1 --nodes-min=0 
 <img width="1080" alt="Screenshot 2023-04-03 at 21 46 52" src="https://user-images.githubusercontent.com/126002808/229625448-6f06e850-31a6-4fc7-ba0d-d81d06027dbd.png">
 
 
-<img width="1435" alt="Screenshot 2023-04-03 at 22 01 27" src="https://user-images.githubusercontent.com/126002808/229628115-5f3b1c7c-716f-47d3-9eaa-200ff9dadf58.png">
-
-
 
 
 ## Proof of Completed Deployment
@@ -28,7 +25,7 @@ All the relevant pods are running in my ```EKS``` cluster
 
 We can also see the cluster was connecting in the Calico Cloud UI:
 
-<img width="1435" alt="Screenshot 2023-04-03 at 22 02 09" src="https://user-images.githubusercontent.com/126002808/229627390-1d3748f3-9740-4852-9a67-5c61a2d3ae3c.png">
+<img width="1435" alt="Screenshot 2023-04-03 at 22 01 27" src="https://user-images.githubusercontent.com/126002808/229628115-5f3b1c7c-716f-47d3-9eaa-200ff9dadf58.png">
 
 
 
