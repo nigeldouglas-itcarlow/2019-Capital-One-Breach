@@ -69,5 +69,5 @@ kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2019-Ca
 ## Introduce the adversary (this is a deployment manifest doing malicious actions)
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2019-Capital-One-Breach/main/applications/microservices.yaml
+kubectl apply -f https://installer.calicocloud.io/rogue-demo.yaml -n capital-one
 ```
