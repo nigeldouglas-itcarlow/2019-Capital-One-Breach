@@ -3,7 +3,7 @@ Repository was created to highlight the advantages of Project Calico and Open So
 
 ## Create a lightweight, 1 node EKS Cluster:
 ```
-eksctl create nodegroup --cluster nigel-eks-cluster --node-type t3.xlarge --nodes=1 --nodes-min=0 --nodes-max=3 --max-pods-per-node 58
+eksctl create cluster capital-one --node-type t3.xlarge --nodes=1 --nodes-min=0 --nodes-max=3 --max-pods-per-node 58
 ```
 
 ## Deny Traffic to TOR Exit Nodes
