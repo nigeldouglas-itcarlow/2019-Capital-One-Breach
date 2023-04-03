@@ -25,30 +25,7 @@ eksctl create cluster capital-one --node-type t3.xlarge --nodes=1 --nodes-min=0 
 
 
 
-## Deny Traffic to TOR Exit Nodes
 
-The Tigera/Calico team provide the below ```GlobalThreatFeed``` manifest. <br/>
-By running the below command you will be able to get the full list of known IP's associated with ```Tor Bulk Exit List```. 
-
-```
-kubectl apply -f https://docs.tigera.io/manifests/threatdef/tor-exit-feed.yaml
-```
-
-Dissecting the manifest, we can see that it makes a ```pull``` request against a public-facing IP list. <br/>
-It then labels the feeds feed with ```feed: tor``` under the ```globalNetworkSet``` object.
-```
-apiVersion: projectcalico.org/v3
-kind: GlobalThreatFeed
-metadata:
-  name: tor-bulk-exit-list
-spec:
-  pull:
-    http:
-      url: https://check.torproject.org/cgi-bin/TorBulkExitList.py?ip=1.1.1.1
-  globalNetworkSet:
-    labels:
-      feed: tor
-```
 
 ## Organizing IPTable Rules in Logical Order
 
@@ -89,4 +66,29 @@ kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2019-Ca
 
 ```
 kubectl apply -f https://installer.calicocloud.io/rogue-demo.yaml -n capital-one
+```
+
+## Deny Traffic to TOR Exit Nodes
+
+The Tigera/Calico team provide the below ```GlobalThreatFeed``` manifest. <br/>
+By running the below command you will be able to get the full list of known IP's associated with ```Tor Bulk Exit List```. 
+
+```
+kubectl apply -f https://docs.tigera.io/manifests/threatdef/tor-exit-feed.yaml
+```
+
+Dissecting the manifest, we can see that it makes a ```pull``` request against a public-facing IP list. <br/>
+It then labels the feeds feed with ```feed: tor``` under the ```globalNetworkSet``` object.
+```
+apiVersion: projectcalico.org/v3
+kind: GlobalThreatFeed
+metadata:
+  name: tor-bulk-exit-list
+spec:
+  pull:
+    http:
+      url: https://check.torproject.org/cgi-bin/TorBulkExitList.py?ip=1.1.1.1
+  globalNetworkSet:
+    labels:
+      feed: tor
 ```
