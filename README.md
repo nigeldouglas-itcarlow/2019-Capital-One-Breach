@@ -1,5 +1,10 @@
 # 2019 Capital One Data Breach
-Repository was created to highlight the advantages of Project Calico and Open Source Falco, and how they could have been used to prevent the Capital One Data Breach
+Repository was created to highlight the advantages of Project Calico and Open Source Falco, and how they could have been used to prevent the Capital One Data Breach 
+
+## Create a lightweight, 1 node EKS Cluster:
+```
+eksctl create nodegroup --cluster nigel-eks-cluster --node-type t3.xlarge --nodes=1 --nodes-min=0 --nodes-max=3 --max-pods-per-node 58
+```
 
 ## Deny Traffic to TOR Exit Nodes
 
@@ -55,6 +60,14 @@ kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2019-Ca
 
 Introducing the ```Capital One``` microservice application <br/>
 This creates a ```frontend```, a ```backend```, a ```logging```service, and 2 intermediary microservices
+```
+kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2019-Capital-One-Breach/main/applications/microservices.yaml
+```
+
+## Implement a Zone-Based Architecture (ZBA) to our zero-trust environment
+
+## Introduce the adversary (this is a deployment manifest doing malicious actions)
+
 ```
 kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2019-Capital-One-Breach/main/applications/microservices.yaml
 ```
