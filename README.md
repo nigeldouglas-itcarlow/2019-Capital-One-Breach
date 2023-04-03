@@ -66,11 +66,29 @@ Whitelisting ```kube-dns``` traffic in the ```nigel-security``` tier:
 kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2019-Capital-One-Breach/main/configs/kube-dns.yaml
 ```
 
+Opened the file in Vim to explain how the Calico Policy is created within the ```nigel-security``` tier <br/>
+The policy is created in the earliest possible tier to make sure traffic is not incorrectly dropped by security rules.
+
+<img width="464" alt="Screenshot 2023-04-03 at 22 15 35" src="https://user-images.githubusercontent.com/126002808/229629443-585b9511-e29f-4b46-a29d-b966f0866b32.png">
+
+Set the correct ```apiVersion``` for the policy <br/>
+As you can see, it was a ```globalNetworkPolicy``` - enforced across all network namespaces:
+
+<img width="763" alt="Screenshot 2023-04-03 at 22 19 09" src="https://user-images.githubusercontent.com/126002808/229629927-ad7de977-8db7-4069-9315-57d881ba87c9.png">
+
+Policies appear in the Calico Cloud UI in realtime.
+
+<img width="1438" alt="Screenshot 2023-04-03 at 22 21 08" src="https://user-images.githubusercontent.com/126002808/229630352-0f14e911-c48d-4074-9896-9c6715d7deef.png">
+
+
 Introducing the ```Capital One``` microservice application <br/>
 This creates a ```frontend```, a ```backend```, a ```logging```service, and 2 intermediary microservices
 ```
 kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2019-Capital-One-Breach/main/applications/microservices.yaml
 ```
+
+<img width="1438" alt="Screenshot 2023-04-03 at 22 23 24" src="https://user-images.githubusercontent.com/126002808/229630704-cae778f3-7ddf-42ca-a087-a53720d7af56.png">
+
 
 ## Implement a Zone-Based Architecture (ZBA) to our zero-trust environment
 
