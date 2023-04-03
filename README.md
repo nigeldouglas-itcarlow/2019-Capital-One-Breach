@@ -122,3 +122,27 @@ spec:
     labels:
       feed: tor
 ```
+
+
+## Scale down your EKS Cluster
+Confirm the cluster name
+```
+eksctl get cluster
+```
+Find the Node Group ID associated with the cluster
+```
+eksctl get nodegroup --cluster capital-one
+```
+Scale the Node Group down to 0 nodes to reduce AWS costs
+```
+eksctl scale nodegroup --cluster capital-one --name ng-3b6f6920 --nodes 0
+```
+
+<img width="1438" alt="Screenshot 2023-04-03 at 22 29 41" src="https://user-images.githubusercontent.com/126002808/229631846-ee400bd7-9673-42ee-aebf-1e1d62153f5b.png">
+
+
+
+Alternatively, delete the cluster altogether when the tests are performed
+```
+eksctl delete cluster --name capital-one
+```
