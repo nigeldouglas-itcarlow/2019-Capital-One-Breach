@@ -16,6 +16,8 @@ eksctl create cluster capital-one --node-type t3.xlarge --nodes=1 --nodes-min=0 
 <img width="1080" alt="Screenshot 2023-04-03 at 21 46 52" src="https://user-images.githubusercontent.com/126002808/229625448-6f06e850-31a6-4fc7-ba0d-d81d06027dbd.png">
 
 
+<img width="1080" alt="Screenshot 2023-04-03 at 21 47 27" src="https://user-images.githubusercontent.com/126002808/229628563-3869c46d-1b8f-48ca-b185-5ecc7addc096.png">
+
 
 
 ## Proof of Completed Deployment
