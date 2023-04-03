@@ -6,6 +6,13 @@ Repository was created to highlight the advantages of Project Calico and Open So
 eksctl create cluster capital-one --node-type t3.xlarge --nodes=1 --nodes-min=0 --nodes-max=3 --max-pods-per-node 58
 ```
 
+![Screenshot 2023-04-03 at 10 38 55](https://user-images.githubusercontent.com/126002808/229472253-d5baf227-803a-408a-8df7-ab5e0505b18b.png)
+
+## Signed-up for Calico Cloud free trial
+
+<img width="1369" alt="Screenshot 2023-04-03 at 10 08 55" src="https://user-images.githubusercontent.com/126002808/229472385-2e139249-da22-4f5e-a809-ddd82d29f4ef.png">
+
+
 ## Deny Traffic to TOR Exit Nodes
 
 The Tigera/Calico team provide the below ```GlobalThreatFeed``` manifest. <br/>
