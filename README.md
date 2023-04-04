@@ -146,7 +146,8 @@ At this point I decided to remotely connect to AWS via EKSCTL CLI tool on my Mac
 eksctl scale nodegroup --cluster capital-one --name ng-539a90a2 --nodes 1
 ```
 
-![Screenshot 2023-04-04 at 14 05 24](https://user-images.githubusercontent.com/126002808/229800844-eda81828-999f-49fb-835c-0cb594687bbd.png)
+![Screenshot 2023-04-04 at 14 05 24](https://user-images.githubusercontent.com/126002808/229801072-f6f38ec9-afbe-49f2-991a-c85f1a7196de.png)
+
 
 
 Alternatively, delete the cluster altogether when the tests are performed
