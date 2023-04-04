@@ -95,12 +95,23 @@ kubectl get pods -n capital-one --show-labels
 
 ![Screenshot 2023-04-04 at 14 59 16](https://user-images.githubusercontent.com/126002808/229817295-b2414351-aee0-41fa-ad48-e56e35db7874.png)
 
+It's also worth pointing-out that all pods are assigned a unique IP address. <br/>
+However, due to the ephemeral nature of containerized workloads, pod IP's cannot be relied upon.
 
 ```
 kubectl get pods -n capital-one -o wide
 ```
 
 ![Screenshot 2023-04-04 at 15 01 08](https://user-images.githubusercontent.com/126002808/229817331-d6b117e3-c94c-43e8-b49b-1b0f576b20cc.png)
+
+For example, if I kill a pod manually, or due to cluster scale-up/down, a pod is self-healing and will recreated. <br/>
+Unfortunately, when it recreates it will be assigned a new IP address. Therefore, we should not build rules based on IP addresses.
+
+```
+kubectl delete pod backend-786744f846-wn86l -n capital-one
+```
+
+![Screenshot 2023-04-04 at 15 15 36](https://user-images.githubusercontent.com/126002808/229822191-263111fc-d643-4b78-a88b-7b89770a0d07.png)
 
 
 ## Implement a Zone-Based Architecture (ZBA) to our zero-trust environment
