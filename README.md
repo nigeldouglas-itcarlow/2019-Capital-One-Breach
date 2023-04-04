@@ -107,9 +107,23 @@ kubectl get pods -n capital-one -o wide
 
 ## Introduce the adversary (this is a deployment manifest doing malicious actions)
 
+I created an attacker-app into the same network namespace as all other workloads. <br/>
+By default, Kubernetes defines a flat network - which means all workloads can freely communicate amonst each other:
 ```
 kubectl apply -f https://installer.calicocloud.io/rogue-demo.yaml -n capital-one
 ```
+It's also worth noting that the attacker was intimate with Capital One's network architecture. <br/>
+As such, we need use ```admission controllers``` (like Open Policy Agent) to prevent the attacker labelling their workloads at runtime:
+![Screenshot 2023-04-04 at 15 03 29](https://user-images.githubusercontent.com/126002808/229817958-825d9f3a-ca9b-4456-bb1a-0235344ccd25.png)
+
+Without Calico policies, all workloads - whether legitimate or not - can freely communicate.
+Since Calico scrapes metrics via ```Prometheus``` and streams events via ```FluentD```, we get a real-time view of the activity.
+
+<img width="1080" alt="Screenshot 2023-04-04 at 15 11 34" src="https://user-images.githubusercontent.com/126002808/229820131-40fb1f51-33e7-4a4d-a989-f7592b29caf5.png">
+
+```Green lines``` represent traffic that is ```allowed```.
+```Red lines``` represent traffic that is ```denied by policy```.
+
 
 ## Deny Traffic to TOR Exit Nodes
 
