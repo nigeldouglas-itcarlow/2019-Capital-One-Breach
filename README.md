@@ -135,12 +135,15 @@ eksctl get nodegroup --cluster capital-one
 ```
 Scale the Node Group down to 0 nodes to reduce AWS costs
 ```
-eksctl scale nodegroup --cluster capital-one --name ng-3b6f6920 --nodes 0
+eksctl scale nodegroup --cluster capital-one --name ng-539a90a2 --nodes 0
 ```
 
 <img width="1438" alt="Screenshot 2023-04-03 at 22 29 41" src="https://user-images.githubusercontent.com/126002808/229631846-ee400bd7-9673-42ee-aebf-1e1d62153f5b.png">
 
-
+Scale the Node Group back to 1 node to continue testing
+```
+eksctl scale nodegroup --cluster capital-one --name ng-539a90a2 --nodes 1
+```
 
 Alternatively, delete the cluster altogether when the tests are performed
 ```
