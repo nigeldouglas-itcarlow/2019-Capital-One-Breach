@@ -1,3 +1,4 @@
+### Nigel Douglas Test App to represent Capital One Architecture ###
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -29,6 +30,7 @@ spec:
       labels:
         app: backend
         fw-zone: restricted
+        owner: nigel
     spec:
       serviceAccount: storefront
       containers:
@@ -110,6 +112,7 @@ spec:
       labels:
         app: frontend
         fw-zone: dmz
+        owner: nigel
     spec:
       serviceAccount: storefront
       containers:
@@ -209,6 +212,7 @@ spec:
     metadata:
       labels:
         app: logging
+        owner: nigel
     spec:
       serviceAccount: storefront
       containers:
@@ -281,6 +285,7 @@ spec:
       labels:
         app: microservice1
         fw-zone: trusted
+        owner: nigel
     spec:
       serviceAccount: storefront
       containers:
@@ -383,6 +388,7 @@ spec:
       labels:
         app: microservice2
         fw-zone: trusted
+        owner: nigel
     spec:
       serviceAccount: storefront
       containers:
@@ -493,6 +499,7 @@ spec:
     metadata:
       labels:
         app: acme-microservice1
+        owner: nigel
     spec:
       containers:
       - name: mock-acme-microservice2
@@ -527,6 +534,7 @@ metadata:
   namespace: acme
   labels:
     app: acme-microservice2
+    owner: nigel
 spec:
   replicas: 1
   selector:
