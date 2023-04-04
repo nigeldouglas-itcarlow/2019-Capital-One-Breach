@@ -140,10 +140,14 @@ eksctl scale nodegroup --cluster capital-one --name ng-539a90a2 --nodes 0
 
 <img width="1438" alt="Screenshot 2023-04-03 at 22 29 41" src="https://user-images.githubusercontent.com/126002808/229631846-ee400bd7-9673-42ee-aebf-1e1d62153f5b.png">
 
-Scale the Node Group back to 1 node to continue testing
+Scale the Node Group back to 1 node to continue testing <br/>
+At this point I decided to remotely connect to AWS via EKSCTL CLI tool on my Macbook:
 ```
 eksctl scale nodegroup --cluster capital-one --name ng-539a90a2 --nodes 1
 ```
+
+![Screenshot 2023-04-04 at 14 05 24](https://user-images.githubusercontent.com/126002808/229800844-eda81828-999f-49fb-835c-0cb594687bbd.png)
+
 
 Alternatively, delete the cluster altogether when the tests are performed
 ```
