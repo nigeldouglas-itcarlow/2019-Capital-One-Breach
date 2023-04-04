@@ -89,6 +89,19 @@ kubectl apply -f https://raw.githubusercontent.com/nigeldouglas-itcarlow/2019-Ca
 
 <img width="1438" alt="Screenshot 2023-04-03 at 22 23 24" src="https://user-images.githubusercontent.com/126002808/229630704-cae778f3-7ddf-42ca-a087-a53720d7af56.png">
 
+```
+kubectl get pods -n capital-one --show-labels
+```
+
+![Screenshot 2023-04-04 at 14 59 16](https://user-images.githubusercontent.com/126002808/229817295-b2414351-aee0-41fa-ad48-e56e35db7874.png)
+
+
+```
+kubectl get pods -n capital-one -o wide
+```
+
+![Screenshot 2023-04-04 at 15 01 08](https://user-images.githubusercontent.com/126002808/229817331-d6b117e3-c94c-43e8-b49b-1b0f576b20cc.png)
+
 
 ## Implement a Zone-Based Architecture (ZBA) to our zero-trust environment
 
