@@ -316,6 +316,15 @@ spec:
       feed: tor
 ```
 
+By default, Calico Cloud hooks-in to 2 IP feeds for known/blacklisted IP CIDRs. <br/>
+In our case, we want to see any connections that go to the Tor Network - similar to the Capital One attack.
+<img width="1437" alt="Screenshot 2023-04-05 at 11 24 28" src="https://user-images.githubusercontent.com/126002808/230054459-81b1a5ff-0d65-4d10-bfa7-529f7d314174.png">
+
+
+As you can see in the above .YAML manifest, the ```GlobalThreatFeed``` resource creates another object called a ```globalNetworkSet``` which is just a dynamic list of IP CIDRs associated with Tor Bulk Exit lists.
+<img width="1437" alt="Screenshot 2023-04-05 at 11 25 03" src="https://user-images.githubusercontent.com/126002808/230054753-41a7b3fb-7fee-4baf-ac47-38f59feb0750.png">
+
+
 
 ## Scale down your EKS Cluster
 Confirm the cluster name
