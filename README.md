@@ -392,6 +392,52 @@ spec:
 
 <img width="1437" alt="Screenshot 2023-04-05 at 14 16 55" src="https://user-images.githubusercontent.com/126002808/230092310-e11fb9ad-a263-4123-b51a-cf65172e3f5d.png">
 
+## Detect & Prevent the Patterns and Behaviours of Capital One
+
+![Screenshot 2023-04-05 at 14 22 26](https://user-images.githubusercontent.com/126002808/230093716-b7940f0c-fab8-4516-bd7d-5cd1351fcd96.png)
+
+### Find AWS Credentials 
+This is a perfect opportunity to test our automation actions. <br/>
+The capital-one attacker attempted to find AWS credentials, usually through a ```grep``` command:
+```
+- rule: Find AWS Credentials
+  desc: Find or grep AWS credentials
+  condition: >
+    spawned_process and
+    ((grep_commands and private_aws_credentials) or
+    (proc.name = "find" and proc.args endswith ".aws/credentials"))
+  output: Detected AWS credentials search activity (user.name=%user.name user.loginuid=%user.loginuid proc.cmdline=%proc.cmdline container.id=%container.id container_name=%container.name evt.type=%evt.type evt.res=%evt.res proc.pid=%proc.pid proc.cwd=%proc.cwd proc.ppid=%proc.ppid proc.pcmdline=%proc.pcmdline proc.sid=%proc.sid proc.exepath=%proc.exepath user.uid=%user.uid user.loginname=%user.loginname group.gid=%group.gid group.name=%group.name container.name=%container.name image=%container.image.repository:%container.image.tag)
+  priority: WARNING
+  tags: [host, container, mitre_credential_access, process, aws, T1552]
+```
+
+![Screenshot 2023-04-05 at 14 24 49](https://user-images.githubusercontent.com/126002808/230094447-2ebfdda8-ea6e-46a9-a2c2-14c2fd2f6992.png)
+
+Falco can send alerts to one or more channels:
+
+- Standard Output
+- A file
+- Syslog
+- A spawned program
+- A HTTP/HTTPS endpoint
+- A client via the gRPC API
+
+### EC2 with full access IAM role
+
+
+
+```
+- rule: Find AWS Credentials
+  desc: Find or grep AWS credentials
+  condition: >
+    spawned_process and
+    ((grep_commands and private_aws_credentials) or
+    (proc.name = "find" and proc.args endswith ".aws/credentials"))
+  output: Detected AWS credentials search activity (user.name=%user.name user.loginuid=%user.loginuid proc.cmdline=%proc.cmdline container.id=%container.id container_name=%container.name evt.type=%evt.type evt.res=%evt.res proc.pid=%proc.pid proc.cwd=%proc.cwd proc.ppid=%proc.ppid proc.pcmdline=%proc.pcmdline proc.sid=%proc.sid proc.exepath=%proc.exepath user.uid=%user.uid user.loginname=%user.loginname group.gid=%group.gid group.name=%group.name container.name=%container.name image=%container.image.repository:%container.image.tag)
+  priority: WARNING
+  tags: [host, container, mitre_credential_access, process, aws, T1552]
+```
+
 
 
 ## Scale down your EKS Cluster
