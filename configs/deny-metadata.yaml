@@ -5,7 +5,7 @@ metadata:
 spec:
   tier: nigel-security
   order: 210
-  namespaceSelector: kubernetes.io/metadata.name=capital-one
+  namespaceSelector: 'kubernetes.io/metadata.name=capital-one'
   serviceAccountSelector: ''
   egress:
     - action: Deny
