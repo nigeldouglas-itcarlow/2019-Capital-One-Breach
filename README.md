@@ -184,6 +184,46 @@ spec:
 ### Trusted Zone 
 Talks between frontend and backend workloads
 
+```
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: capital-one-platform.trusted
+  namespace: capital-one
+spec:
+  tier: capital-one-platform
+  order: 10
+  selector: fw-zone == "trusted"
+  serviceAccountSelector: ''
+  ingress:
+    - action: Allow
+      source:
+        selector: fw-zone == "dmz"
+      destination: {}
+    - action: Allow
+      source:
+        selector: fw-zone == "trusted"
+      destination: {}
+    - action: Deny
+      source: {}
+      destination: {}
+  egress:
+    - action: Allow
+      source: {}
+      destination:
+        selector: fw-zone == "trusted"
+    - action: Allow
+      source: {}
+      destination:
+        selector: fw-zone == "restricted"
+    - action: Deny
+      source: {}
+      destination: {}
+  types:
+    - Ingress
+    - Egress
+```
+
 ### Restricted Zone 
 Secures sensitive workloads such as a database
 
