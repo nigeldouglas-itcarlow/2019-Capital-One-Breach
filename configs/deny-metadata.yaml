@@ -1,12 +1,11 @@
 apiVersion: projectcalico.org/v3
 kind: StagedGlobalNetworkPolicy
 metadata:
-  name: nigel-security.block-feodo
+  name: nigel-security.block-ec2-metadata
 spec:
   tier: nigel-security
   order: 210
-  selector: projectcalico.org/namespace = "capital-one"
-  namespaceSelector: ''
+  namespaceSelector: kubernetes.io/metadata.name=capital-one
   serviceAccountSelector: ''
   egress:
     - action: Deny
