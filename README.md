@@ -341,6 +341,14 @@ spec:
 ```
 
 ### Falco Rule for EC2 Metadata Service
+
+In a local/user rules file, you could override this macro to explicitly enumerate the container images that you want to allow access to EC2 metadata. <br/>
+In this main falco rules file, there is no way to know all the containers that should have access, so any container is allowed, by repeating the "container" macro. <br/>
+In the overridden macro, the condition would look something like <br/>
+<br/>
+(container.image.repository = vendor/container-1 or
+container.image.repository = vendor/container-2 or ...)
+
 ```
 - rule: Contact EC2 Instance Metadata Service From Container
   desc: Detect attempts to contact the EC2 Instance Metadata Service from a container
