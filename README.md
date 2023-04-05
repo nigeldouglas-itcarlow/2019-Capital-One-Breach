@@ -114,10 +114,9 @@ kubectl delete pod backend-786744f846-wn86l -n capital-one
 ![Screenshot 2023-04-04 at 15 15 36](https://user-images.githubusercontent.com/126002808/229822191-263111fc-d643-4b78-a88b-7b89770a0d07.png)
 
 
-## Implement a Zone-Based Architecture (ZBA) to our zero-trust environment
-
-## Introduce the adversary (this is a deployment manifest doing malicious actions)
-
+## Introduce the adversary 
+This is a deployment manifest doing malicious actions <br/>
+<br/>
 I created an attacker-app into the same network namespace as all other workloads. <br/>
 By default, Kubernetes defines a flat network - which means all workloads can freely communicate amonst each other:
 ```
@@ -132,8 +131,56 @@ Since Calico scrapes metrics via ```Prometheus``` and streams events via ```Flue
 
 <img width="1080" alt="Screenshot 2023-04-04 at 15 11 34" src="https://user-images.githubusercontent.com/126002808/229820131-40fb1f51-33e7-4a4d-a989-f7592b29caf5.png">
 
-```Green lines``` represent traffic that is ```allowed```.
+```Green lines``` represent traffic that is ```allowed```. <br/>
 ```Red lines``` represent traffic that is ```denied by policy```.
+
+## Creating a Zone-Based Architecture
+
+A typical zone-based architecture includes: 
+
+- A DMZ Zone
+- Trusted Zone
+- Restricted Zone
+
+### Demilitarized Zone (DMZ)
+Allow ingress traffic from public IP CIDR nets (18.0.0.0/16) <br/>
+All other ingress traffic from workloads is denied. <br/>
+<br/>
+
+
+```
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: capital-one-platform.dmz
+  namespace: capital-one
+spec:
+  tier: capital-one-platform
+  order: 0
+  selector: fw-zone == "dmz"
+  serviceAccountSelector: ''
+  ingress:
+    - action: Allow
+      source:
+        nets:
+          - 18.0.0.0/16
+      destination: {}
+    - action: Deny
+      source: {}
+      destination: {}
+  egress:
+    - action: Allow
+      source: {}
+      destination:
+        selector: fw-zone == "trusted"||app == "logging"
+    - action: Deny
+      source: {}
+      destination: {}
+  types:
+    - Ingress
+    - Egress
+```
+
 
 
 ## Deny Traffic to TOR Exit Nodes
