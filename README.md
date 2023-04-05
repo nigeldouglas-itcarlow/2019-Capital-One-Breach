@@ -359,6 +359,9 @@ container.image.repository = vendor/container-2 or ...)
   tags: [network, aws, container, mitre_discovery, T1565]
 ```
 
+Link back to default Falco rule in GitHub: <br/>
+https://github.com/falcosecurity/rules/blob/main/rules/falco_rules.yaml#L2411,L2417
+
 ## Scale down your EKS Cluster
 Confirm the cluster name
 ```
