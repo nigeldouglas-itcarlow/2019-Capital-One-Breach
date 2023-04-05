@@ -359,6 +359,11 @@ container.image.repository = vendor/container-2 or ...)
   tags: [network, aws, container, mitre_discovery, T1565]
 ```
 
+## Deny traffic to EC2 metadata service
+
+<img width="638" alt="Screenshot 2023-04-05 at 14 05 34" src="https://user-images.githubusercontent.com/126002808/230089483-ca028e8f-af3e-4f85-bd25-c4bfb9da6fdd.png">
+
+
 Link back to default Falco rule in GitHub: <br/>
 https://github.com/falcosecurity/rules/blob/main/rules/falco_rules.yaml#L2411,L2417
 
