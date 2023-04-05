@@ -361,7 +361,30 @@ container.image.repository = vendor/container-2 or ...)
 
 ## Deny traffic to EC2 metadata service
 
-<img width="638" alt="Screenshot 2023-04-05 at 14 05 34" src="https://user-images.githubusercontent.com/126002808/230089483-ca028e8f-af3e-4f85-bd25-c4bfb9da6fdd.png">
+```
+apiVersion: projectcalico.org/v3
+kind: StagedGlobalNetworkPolicy
+metadata:
+  name: nigel-security.block-ec2-metadata
+spec:
+  tier: nigel-security
+  order: 210
+  namespaceSelector: 'kubernetes.io/metadata.name == "capital-one"'
+  serviceAccountSelector: ''
+  egress:
+    - action: Deny
+      source: {}
+      destination:
+        selector: role == "aws-metadata-ip"
+  doNotTrack: false
+  applyOnForward: false
+  preDNAT: false
+  types:
+    - Egress
+```
+
+![Screenshot 2023-04-05 at 14 15 17](https://user-images.githubusercontent.com/126002808/230091696-d08a99fa-a5a2-4eea-a18c-b6ba7d064fd9.png)
+
 
 
 Link back to default Falco rule in GitHub: <br/>
