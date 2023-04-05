@@ -278,6 +278,19 @@ spec:
     - Egress
 ```
 
+Proof that the zone-based architecture was configured for the ```capital-one``` workloads
+```
+kubectl get networkpolicies.p -n capital-one -l projectcalico.org/tier=capital-one-platform
+```
+<img width="1437" alt="Screenshot 2023-04-05 at 11 18 02" src="https://user-images.githubusercontent.com/126002808/230052980-289f23c7-68e3-4b1b-b694-e627166aafc8.png">
+
+How the zone-based architecture is represented in the Calico Cloud user interface:
+
+<img width="1437" alt="Screenshot 2023-04-05 at 11 18 50" src="https://user-images.githubusercontent.com/126002808/230053281-95d04550-11f0-4094-864b-f4119e0ed788.png">
+
+
+
+
 ## Deny Traffic to TOR Exit Nodes
 
 The Tigera/Calico team provide the below ```GlobalThreatFeed``` manifest. <br/>
