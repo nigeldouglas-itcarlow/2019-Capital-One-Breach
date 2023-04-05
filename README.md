@@ -359,6 +359,9 @@ container.image.repository = vendor/container-2 or ...)
   tags: [network, aws, container, mitre_discovery, T1565]
 ```
 
+Link back to default Falco rule in GitHub: <br/>
+https://github.com/falcosecurity/rules/blob/main/rules/falco_rules.yaml#L2411,L2417
+
 ## Deny traffic to EC2 metadata service
 
 ```
@@ -385,10 +388,11 @@ spec:
 
 ![Screenshot 2023-04-05 at 14 15 17](https://user-images.githubusercontent.com/126002808/230091696-d08a99fa-a5a2-4eea-a18c-b6ba7d064fd9.png)
 
+<img width="1437" alt="Screenshot 2023-04-05 at 14 16 39" src="https://user-images.githubusercontent.com/126002808/230092267-49bc1bbb-6912-4118-89b4-29baf472b35c.png">
+
+<img width="1437" alt="Screenshot 2023-04-05 at 14 16 55" src="https://user-images.githubusercontent.com/126002808/230092310-e11fb9ad-a263-4123-b51a-cf65172e3f5d.png">
 
 
-Link back to default Falco rule in GitHub: <br/>
-https://github.com/falcosecurity/rules/blob/main/rules/falco_rules.yaml#L2411,L2417
 
 ## Scale down your EKS Cluster
 Confirm the cluster name
