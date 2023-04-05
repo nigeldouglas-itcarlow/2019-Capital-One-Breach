@@ -325,6 +325,31 @@ As you can see in the above .YAML manifest, the ```GlobalThreatFeed``` resource 
 <img width="1437" alt="Screenshot 2023-04-05 at 11 25 03" src="https://user-images.githubusercontent.com/126002808/230054753-41a7b3fb-7fee-4baf-ac47-38f59feb0750.png">
 
 
+### GlobalNetworkSet for EC2 Metadata Service
+On EC2 instances, 169.254.169.254 is a special IP used to fetch metadata about the instance. <br/>
+It may be desirable to detect and prevent access to this IP from containers.
+```
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkSet
+metadata:
+  name: ec2-metadata-service
+  labels:
+    role: aws-metadata-ip
+spec:
+  nets:
+    - 169.254.169.254
+```
+
+### Falco Rule for EC2 Metadata Service
+```
+- rule: Contact EC2 Instance Metadata Service From Container
+  desc: Detect attempts to contact the EC2 Instance Metadata Service from a container
+  condition: outbound and fd.sip="169.254.169.254" and container and not ec2_metadata_containers
+  output: Outbound connection to EC2 instance metadata service (command=%proc.cmdline pid=%proc.pid connection=%fd.name %container.info image=%container.image.repository:%container.image.tag)
+  priority: NOTICE
+  enabled: false
+  tags: [network, aws, container, mitre_discovery, T1565]
+```
 
 ## Scale down your EKS Cluster
 Confirm the cluster name
