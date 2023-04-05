@@ -234,6 +234,11 @@ spec:
     - Egress
 ```
 
+We can see that the ```trusted``` zone is already denying traffic for the malicious attacker <br/>
+The reason for this is because only workloads labelled ```fw-zone: trusted``` are allowed to communicated with the database.
+<img width="1437" alt="Screenshot 2023-04-05 at 10 59 28" src="https://user-images.githubusercontent.com/126002808/230048603-655d095a-a980-4f49-80fd-a08546e0f6e4.png">
+
+
 ### Restricted Zone 
 Secures sensitive workloads such as a database
 
