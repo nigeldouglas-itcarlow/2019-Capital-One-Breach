@@ -234,9 +234,13 @@ spec:
     - Egress
 ```
 
-We can see that the ```trusted``` zone is already denying traffic for the malicious attacker <br/>
-The reason for this is because only workloads labelled ```fw-zone: trusted``` are allowed to communicated with the database.
+We can see that the ```trusted``` zone is already denying traffic for any potential exfiltration attempts to public internet <br/>
+The reason for this is because only workloads labelled ```fw-zone: trusted``` can only contact ```frontend``` workloads that can perform ingress/egress activity against the internet.
 <img width="1437" alt="Screenshot 2023-04-05 at 10 59 28" src="https://user-images.githubusercontent.com/126002808/230048603-655d095a-a980-4f49-80fd-a08546e0f6e4.png">
+
+Proof that the traffic from ```microservice2``` is attempting to contact the public internet. <br/>
+At this point, we don't know why the network connection was made. That's where we need incident response and forensic capabilities.
+<img width="1437" alt="Screenshot 2023-04-05 at 11 05 44" src="https://user-images.githubusercontent.com/126002808/230050128-43a11561-a960-4579-9143-1979aff66767.png">
 
 
 ### Restricted Zone 
