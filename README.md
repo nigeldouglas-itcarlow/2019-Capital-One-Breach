@@ -181,6 +181,16 @@ spec:
     - Egress
 ```
 
+We can see that the ```dmz``` policy was correctly assigned to the ```capital-one-platform``` tier <br/>
+It's also visible that the policy matched ```1 endpoint```
+
+<img width="1437" alt="Screenshot 2023-04-05 at 10 53 54" src="https://user-images.githubusercontent.com/126002808/230047239-a6003b1f-5f64-4a54-8aae-61558042a669.png">
+
+You can also see that policy matched based on the label ```fw-zone: dmz```
+We can see all relevant metadata associated with the matched workload.
+<img width="1437" alt="Screenshot 2023-04-05 at 10 54 10" src="https://user-images.githubusercontent.com/126002808/230047461-6c4c7ee3-f621-4a36-a526-fd37c60960bc.png">
+
+
 ### Trusted Zone 
 Talks between frontend and backend workloads
 
