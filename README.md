@@ -362,19 +362,6 @@ container.image.repository = vendor/container-2 or ...)
 Link back to default Falco rule in GitHub: <br/>
 https://github.com/falcosecurity/rules/blob/main/rules/falco_rules.yaml#L2411,L2417
 
-I created a new workloads called ```Paige-Thompson``` - the name of the Capital One hacker. <br/>
-After exec'ing into the workload, I was able to contact the EC2 metadata service with the below command:
-
-```
-TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \
-&& curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/
-```
-
-Link back to sourced command: <br/>
-https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html
-
-![Screenshot 2023-04-06 at 14 14 25](https://user-images.githubusercontent.com/126002808/230389953-3ced0276-d1e9-4738-8ccb-785a73b4deba.png)
-
 
 
 ## Deny traffic to EC2 metadata service
@@ -513,6 +500,24 @@ helm upgrade falco -f custom-rules.yaml falcosecurity/falco --namespace falco
 ```
 
 <img width="1311" alt="Screenshot 2023-04-06 at 14 44 08" src="https://user-images.githubusercontent.com/126002808/230396753-8b48e260-2e81-449f-a323-7ee18f5fba9c.png">
+
+Apply the custom configurations for Falco:
+
+<img width="1311" alt="Screenshot 2023-04-06 at 14 44 08" src="https://user-images.githubusercontent.com/126002808/230397308-6e592eb3-6260-4c86-9ec2-2287fad1fb5e.png">
+
+I created a new workloads called ```Paige-Thompson``` - the name of the Capital One hacker. <br/>
+After exec'ing into the workload, I was able to contact the EC2 metadata service with the below command:
+
+```
+TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \
+&& curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/
+```
+
+Link back to sourced command: <br/>
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html
+
+![Screenshot 2023-04-06 at 14 14 25](https://user-images.githubusercontent.com/126002808/230389953-3ced0276-d1e9-4738-8ccb-785a73b4deba.png)
+
 
 
 
