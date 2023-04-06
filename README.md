@@ -509,8 +509,11 @@ Once the ```pod``` is initialized, it is assigned its own unique IP address
 
 Modifying Falco to enable some otherwise disabled rules:
 ```
-helm upgrade falco -f ec2-metadata.yaml falcosecurity/falco --namespace falco
+helm upgrade falco -f custom-rules.yaml falcosecurity/falco --namespace falco
 ```
+
+<img width="1311" alt="Screenshot 2023-04-06 at 14 44 08" src="https://user-images.githubusercontent.com/126002808/230396753-8b48e260-2e81-449f-a323-7ee18f5fba9c.png">
+
 
 
 ## Proving that Falco can detect Capital One tests
