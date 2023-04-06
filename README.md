@@ -480,3 +480,11 @@ helm repo update
 helm install falco falcosecurity/falco --namespace falco --create-namespace
 kubectl get pods -n falco -o wide -w
 ```
+
+We can see the process of the ```dameonset``` deployment via ```helm``` charts <br/>
+Once the ```pod``` is initialized, it is assigned its own unique IP address
+
+![Screenshot 2023-04-06 at 13 37 05](https://user-images.githubusercontent.com/126002808/230380676-0860d52a-543a-4ab0-86ab-78209d4374fa.png)
+
+## Proving that Falco can detect Capital One tests
+
