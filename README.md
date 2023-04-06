@@ -362,6 +362,21 @@ container.image.repository = vendor/container-2 or ...)
 Link back to default Falco rule in GitHub: <br/>
 https://github.com/falcosecurity/rules/blob/main/rules/falco_rules.yaml#L2411,L2417
 
+I created a new workloads called ```Paige-Thompson``` - the name of the Capital One hacker. <br/>
+After exec'ing into the workload, I was able to contact the EC2 metadata service with the below command:
+
+```
+TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \
+&& curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/
+```
+
+Link back to sourced command: <br/>
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html
+
+![Screenshot 2023-04-06 at 14 14 25](https://user-images.githubusercontent.com/126002808/230389953-3ced0276-d1e9-4738-8ccb-785a73b4deba.png)
+
+
+
 ## Deny traffic to EC2 metadata service
 
 ```
