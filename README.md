@@ -509,7 +509,7 @@ Once the ```pod``` is initialized, it is assigned its own unique IP address
 
 Modifying Falco to enable some otherwise disabled rules:
 ```
-helm upgrade falco -f custom-rules.yaml falcosecurity/falco --namespace falco
+helm upgrade falco -f ec2-metadata.yaml falcosecurity/falco --namespace falco
 ```
 
 
