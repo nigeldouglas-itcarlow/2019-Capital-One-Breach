@@ -470,3 +470,13 @@ Alternatively, delete the cluster altogether when the tests are performed
 ```
 eksctl delete cluster --name capital-one
 ```
+
+
+## Installing Falco
+
+```
+helm repo add falcosecurity https://falcosecurity.github.io/charts
+helm repo update
+helm install falco falcosecurity/falco --namespace falco --create-namespace
+kubectl get pods -n falco -o wide -w
+```
