@@ -392,6 +392,12 @@ spec:
 
 <img width="1437" alt="Screenshot 2023-04-05 at 14 16 55" src="https://user-images.githubusercontent.com/126002808/230092310-e11fb9ad-a263-4123-b51a-cf65172e3f5d.png">
 
+We also need to modify the rule so that we do not detect and prevent traffic to EC2 Metadata service from legitimate workloads, such as the Calico Cloud operators, as seen here: <br/>
+<br/>
+
+<img width="1327" alt="Screenshot 2023-04-06 at 13 41 28" src="https://user-images.githubusercontent.com/126002808/230381911-f5b13c23-ab1d-4fc3-8471-450dcbb37731.png">
+
+
 ## Detect & Prevent the Patterns and Behaviours of Capital One
 
 ![Screenshot 2023-04-05 at 14 22 26](https://user-images.githubusercontent.com/126002808/230093716-b7940f0c-fab8-4516-bd7d-5cd1351fcd96.png)
