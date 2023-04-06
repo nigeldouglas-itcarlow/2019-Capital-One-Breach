@@ -324,6 +324,36 @@ In our case, we want to see any connections that go to the Tor Network - similar
 As you can see in the above .YAML manifest, the ```GlobalThreatFeed``` resource creates another object called a ```globalNetworkSet``` which is just a dynamic list of IP CIDRs associated with Tor Bulk Exit lists.
 <img width="1437" alt="Screenshot 2023-04-05 at 11 25 03" src="https://user-images.githubusercontent.com/126002808/230054753-41a7b3fb-7fee-4baf-ac47-38f59feb0750.png">
 
+```
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: nigel-security.block-tor
+spec:
+  tier: nigel-security
+  order: 210
+  selector: ''
+  namespaceSelector: kubernetes.io/metadata.name == "capital-one"
+  namespaceSelectorIsTextbox: false
+  serviceAccountSelector: ''
+  egress:
+    - action: Deny
+      source: {}
+      destination:
+        selector: network == "tor"
+  doNotTrack: false
+  applyOnForward: false
+  preDNAT: false
+  types:
+    - Egress
+```
+
+At this point, we can easily block Tor connections from any workload via the below policy. <br/>
+This will happen without the need for automation in Falco. It happens purely if the IP is seen from the NetworkSet in IPTables
+
+
+<img width="1438" alt="Screenshot 2023-04-06 at 14 59 19" src="https://user-images.githubusercontent.com/126002808/230401155-e4532e14-4e7b-4073-9427-bac97ef4d221.png">
+
 
 ### GlobalNetworkSet for EC2 Metadata Service
 On EC2 instances, 169.254.169.254 is a special IP used to fetch metadata about the instance. <br/>
