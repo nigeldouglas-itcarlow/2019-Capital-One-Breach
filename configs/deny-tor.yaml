@@ -1,0 +1,19 @@
+apiVersion: projectcalico.org/v3
+kind: StagedGlobalNetworkPolicy
+metadata:
+  name: nigel-security.block-ec2-metadata
+spec:
+  tier: nigel-security
+  order: 210
+  namespaceSelector: 'kubernetes.io/metadata.name == "capital-one"'
+  serviceAccountSelector: ''
+  egress:
+    - action: Deny
+      source: {}
+      destination:
+        selector: network == "tor-vpn"
+  doNotTrack: false
+  applyOnForward: false
+  preDNAT: false
+  types:
+    - Egress
