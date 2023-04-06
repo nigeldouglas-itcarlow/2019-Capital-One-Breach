@@ -1,7 +1,7 @@
 apiVersion: projectcalico.org/v3
 kind: StagedGlobalNetworkPolicy
 metadata:
-  name: nigel-security.block-ec2-metadata
+  name: nigel-security.block-tor
 spec:
   tier: nigel-security
   order: 210
