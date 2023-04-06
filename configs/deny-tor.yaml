@@ -11,7 +11,7 @@ spec:
     - action: Deny
       source: {}
       destination:
-        selector: network == "tor-vpn"
+        selector: network == "tor"
   doNotTrack: false
   applyOnForward: false
   preDNAT: false
