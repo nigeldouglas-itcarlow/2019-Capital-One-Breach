@@ -1,0 +1,9 @@
+customRules:
+  rules-mining.yaml: |-
+    - rule: Contact EC2 Instance Metadata Service From Container
+      desc: Detect attempts to contact the EC2 Instance Metadata Service from a Capital One container
+      condition: outbound and fd.sip="169.254.169.254" and container and not ec2_metadata_containers
+      output: Outbound connection to EC2 instance metadata service (command=%proc.cmdline pid=%proc.pid connection=%fd.name %container.info image=%container.image.repository:%container.image.tag)
+      priority: NOTICE
+      enabled: true
+      tags: [network, aws, container, capital_one, mitre_discovery, T1565]
