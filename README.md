@@ -518,6 +518,10 @@ https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.
 
 ![Screenshot 2023-04-06 at 14 14 25](https://user-images.githubusercontent.com/126002808/230389953-3ced0276-d1e9-4738-8ccb-785a73b4deba.png)
 
+Any suspicious activities are then flagged by Falco. <br/>
+The real powered is presented when we implement autoation actions.
+
+![Screenshot 2023-04-06 at 14 57 01](https://user-images.githubusercontent.com/126002808/230400147-8692610f-0563-446d-8d39-c3fb7178f611.png)
 
 
 
