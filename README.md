@@ -555,5 +555,23 @@ The real powered is presented when we implement autoation actions.
 
 
 
-## Proving that Falco can detect Capital One tests
+# Proving that Falco can detect Capital One tests
 
+### Detecting SSRF
+
+```
+- rule: Detect SSRF
+  desc: Detects network connections to non-public IP addresses or unusual domains
+  condition: >
+    (evt.type = connect and
+     (fd.sip="0.0.0.0" or fd.sip="127.0.0.1" or fd.sip="::") and
+     (fd.dip="169.254.169.254" or
+      fd.dip="localhost" or
+      fd.dip="metadata.google.internal" or
+      fd.dip="metadata.google.internal." or
+      fd.dip="169.254.169.254." or
+      fd.dip contains "example.com"))
+  output: >
+    Suspicious network activity detected: Process (user=%user.name %container.info) connected to an unusual IP address or domain (dip=%fd.dip, dport=%fd.dport, protocol=%fd.proto)
+  priority: WARNING
+```
