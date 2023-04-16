@@ -618,3 +618,15 @@ The advantage is that you can write network policy rules to apply to both worklo
 
 ![non-cluster](https://user-images.githubusercontent.com/126002808/232325654-725bdafc-00a0-446e-a83a-6fc8a60b4d32.png)
 
+Add the label kubernetes-host to all nodes and their host endpoints:
+```
+kubectl label nodes --all kubernetes-host=
+```
+This tutorial assumes that you already have a tier called ```aws-nodes``` in Calico Cloud:
+```
+kubectl apply -f https://raw.githubusercontent.com/tigera-solutions/aws-howdy-parter-calico-cloud/main/policies/node-tier.yaml
+```
+Once the tier is created, build a policy for the on-prem node:
+```
+kubectl apply -f https://raw.githubusercontent.com/tigera-solutions/aws-howdy-parter-calico-cloud/main/policies/etcd.yaml
+```
