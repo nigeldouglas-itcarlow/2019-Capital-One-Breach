@@ -662,3 +662,13 @@ Label your node so the policy matches this specific node:
 ```
 kubectl label nodes ip-192-168-85-152.eu-west-1.compute.internal env=nigel-ec2
 ```
+
+
+![Screenshot 2023-04-16 at 17 21 32](https://user-images.githubusercontent.com/126002808/232326496-e2938bfc-9d1d-4023-9e2a-2d556d4b7c07.png)
+
+
+<img width="731" alt="Screenshot 2023-04-16 at 17 22 43" src="https://user-images.githubusercontent.com/126002808/232326505-c3774d9e-6b26-4f04-b9c3-5b779c7900e1.png">
+
+
+<img width="1122" alt="Screenshot 2023-04-16 at 17 23 15" src="https://user-images.githubusercontent.com/126002808/232326513-173231b1-0b97-4c1b-af91-9fb098433709.png">
+
