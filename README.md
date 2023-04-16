@@ -575,3 +575,13 @@ The real powered is presented when we implement autoation actions.
     Suspicious network activity detected: Process (user=%user.name %container.info) connected to an unusual IP address or domain (dip=%fd.dip, dport=%fd.dport, protocol=%fd.proto)
   priority: WARNING
 ```
+
+## Install Trivy
+For the purpose of testing, I installed it on my ```ubuntu``` EC2 instance:
+```
+sudo apt-get install wget apt-transport-https gnupg lsb-release
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+sudo apt-get update
+sudo apt-get install trivy
+```
