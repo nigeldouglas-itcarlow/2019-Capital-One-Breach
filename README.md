@@ -672,3 +672,24 @@ kubectl label nodes ip-192-168-85-152.eu-west-1.compute.internal env=nigel-ec2
 
 <img width="1122" alt="Screenshot 2023-04-16 at 17 23 15" src="https://user-images.githubusercontent.com/126002808/232326513-173231b1-0b97-4c1b-af91-9fb098433709.png">
 
+Perform malicious intent
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paige-thompson
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      owner: nigel-douglas
+  template:
+    metadata:
+      labels:
+        owner: nigel-douglas
+    spec:
+      containers:
+        - name: attacker-app
+          image: gcr.io/tigera-demo/attacker-pod:1.0.1
+```
