@@ -693,3 +693,15 @@ spec:
         - name: attacker-app
           image: gcr.io/tigera-demo/attacker-pod:1.0.1
 ```
+
+### KubeScape Rego Snippet
+
+```
+package kubernetes.security.aws
+
+deny[list] {
+    input.kind == "Secret"
+    input.apiVersion == "v1"
+    "s3" in [bucket | bucket := input.data[_] | re_match("^https://s3.amazonaws.com/[a-zA-Z0-9-_.]{1,255}$", string(bucket))]
+}
+```
