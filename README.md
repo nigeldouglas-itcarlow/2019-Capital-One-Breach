@@ -585,3 +585,13 @@ echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main |
 sudo apt-get update
 sudo apt-get install trivy
 ```
+
+## Modify the Felix agent log flush interval
+Should help us see data update quicker during our lab scenario. <br/>
+This is not a recommended configuration for production environments.
+
+```
+kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFlushInterval":"10s"}}'
+kubectl patch felixconfiguration.p default -p '{"spec":{"dnsLogsFlushInterval":"10s"}}'
+kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFileAggregationKindForAllowed":1}}'
+```
