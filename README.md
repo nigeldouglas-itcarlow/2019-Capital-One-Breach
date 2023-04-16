@@ -595,3 +595,26 @@ kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFlushInterval":
 kubectl patch felixconfiguration.p default -p '{"spec":{"dnsLogsFlushInterval":"10s"}}'
 kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFileAggregationKindForAllowed":1}}'
 ```
+## Host Endpoint Protection (On-Prem EC2 Asset):
+https://docs.tigera.io/v3.11/security/kubernetes-nodes
+
+### Enable Host Endpoint Protection (HEP's)
+To enable automatic host endpoints, edit the default ```KubeControllersConfiguration``` instance
+```
+kubectl patch kubecontrollersconfiguration default --patch='{"spec": {"controllers": {"node": {"hostEndpoint": {"autoCreate": "Enabled"}}}}}'
+```
+Confirm the host endpoints exist:
+```
+kubectl get heps -A
+```
+
+![Screenshot 2023-04-16 at 17 10 05](https://user-images.githubusercontent.com/126002808/232325771-e29e0250-6d40-4e7c-be6f-1fb9e819c47b.png)
+
+
+For non-cluster hosts, you can secure host interfaces using host endpoints. <br/>
+Host endpoints can have labels, and work the same as labels on pods/workload endpoints. <br/>
+<br/>
+The advantage is that you can write network policy rules to apply to both workload endpoints and host endpoints using label selectors; where each selector can refer to the either type (or be a mix of the two). For example, you can write a cluster-wide policy for non-cluster hosts that is immediately applied to every host.
+
+![non-cluster](https://user-images.githubusercontent.com/126002808/232325654-725bdafc-00a0-446e-a83a-6fc8a60b4d32.png)
+
