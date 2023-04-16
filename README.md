@@ -622,11 +622,43 @@ Add the label kubernetes-host to all nodes and their host endpoints:
 ```
 kubectl label nodes --all kubernetes-host=
 ```
-This tutorial assumes that you already have a tier called ```aws-nodes``` in Calico Cloud:
+This tutorial assumes that you already have a tier called ```aws-ec2-hosts``` in Calico Cloud:
 ```
-kubectl apply -f https://raw.githubusercontent.com/tigera-solutions/aws-howdy-parter-calico-cloud/main/policies/node-tier.yaml
+apiVersion: projectcalico.org/v3
+kind: Tier
+metadata:
+  name: aws-ec2-hosts
+spec:
+  order: 400
 ```
 Once the tier is created, build a policy for the on-prem node:
 ```
-kubectl apply -f https://raw.githubusercontent.com/tigera-solutions/aws-howdy-parter-calico-cloud/main/policies/etcd.yaml
+apiVersion: projectcalico.org/v3
+kind: StagedGlobalNetworkPolicy
+metadata:
+  name: aws-ec2-hosts.host-firewall
+spec:
+  tier: aws-ec2-hosts
+  order: 0
+  selector: env == "nigel-ec2"
+  namespaceSelector: ''
+  serviceAccountSelector: ''
+  ingress:
+    - action: Allow
+      source: {}
+      destination: {}
+  egress:
+    - action: Allow
+      source: {}
+      destination: {}
+  doNotTrack: false
+  applyOnForward: false
+  preDNAT: false
+  types:
+    - Ingress
+    - Egress
+```
+Label your node so the policy matches this specific node:
+```
+kubectl label nodes ip-192-168-85-152.eu-west-1.compute.internal env=nigel-ec2
 ```
