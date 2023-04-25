@@ -11,7 +11,7 @@ spec:
     - action: Deny
       source: {}
       destination:
-        selector: network == "tor"
+        selector: feed == ejr-vpn
   doNotTrack: false
   applyOnForward: false
   preDNAT: false
